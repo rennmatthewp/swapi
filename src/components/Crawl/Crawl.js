@@ -1,24 +1,31 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getFilm } from "../../apiHelper/apiHelper";
 
-const Crawl = ({ title, openingCrawl }) => {  
-  return (
-    <div className="crawl">
-      <h3>Episode Bkuuee</h3>
-      <p>yes sure</p>
-      <Link to='/main'>
-        <button>X</button>
-      </Link>
-    </div>
-  );
-};
- 
-// Crawl.propTypes = {
-//   title: PropTypes.string,
-//   crawlText: PropTypes.arrayOf(PropTypes.string),
-//   releaseData: PropTypes.string,
-//   poster: PropTypes.string
-// };
+class Crawl extends Component {
+  constructor() {
+    super();
+    this.state = {
+      filmObj: {}
+    }
+  }
+
+  async componentDidMount() {
+    const filmObj = await getFilm();
+    this.setState({ filmObj })
+  }
+
+  render() {
+    return (
+      <div className="crawl">
+        <h3>{this.state.filmObj.title}</h3>
+        <p>{this.state.filmObj.openingCrawl}</p>
+        <Link to="/main">
+          <button>X</button>
+        </Link>
+      </div>
+    );
+  }
+}
 
 export default Crawl;

@@ -6,17 +6,15 @@ import Main from "../Main/Main";
 // import * as fetch from '../../apiHelper/apiHelper'
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Switch> 
-          <Route exact path='/' component={Crawl} />
-          <Route exact path='/main' component={Main} />
-        </Switch>
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <div className="App">
+      <Switch> 
+        <Route exact path='/' component={Crawl} />
+        <Route exact path='/main' component={Main} />
+      </Switch>
+    </div>
+  );
 }
 
 export default App;

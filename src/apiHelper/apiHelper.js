@@ -6,13 +6,6 @@ export const getFilm = async () => {
   const releaseDate = crawlData.release_date;
   const episodeId = crawlData.episode_id;
   const crawlFilm = { openingCrawl, title, releaseDate, episodeId };
+  console.log(crawlFilm)
   return crawlFilm;
 };
-
-// const filmNum = Math.ceil(Math.random * 7);
-
-// export const getFilm = () => {
-//   fetch(`https://swapi.co/api/films/7`)
-//     .then(response => response.json())
-//     .then(result => console.log(result));
-// };
