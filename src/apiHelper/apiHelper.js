@@ -1,11 +1,24 @@
 export const getFilm = async () => {
-  const fetchCrawlData = await fetch(`https://swapi.co/api/films/1`);
-  const crawlData = await fetchCrawlData.json();
-  const openingCrawl = crawlData.opening_crawl;
-  const title = crawlData.title;
-  const releaseDate = crawlData.release_date;
-  const episodeId = crawlData.episode_id;
-  const crawlFilm = { openingCrawl, title, releaseDate, episodeId };
-  console.log(crawlFilm)
-  return crawlFilm;
+  const number = Math.ceil(Math.random() * 7);
+  const crawlData = await fetchAndParse(`https://swapi.co/api/films/${number}`)
+  return cleanCrawlData(crawlData);
+};
+
+const fetchAndParse = async url => {
+  const response = await fetch(url);
+  const result = response.json();
+  return result;
+};
+
+const cleanCrawlData = rawCrawlData => {
+  const lineBreak = new RegExp(/\s{4,}/, 'g');
+  
+  const openingCrawl = rawCrawlData.opening_crawl.replace(lineBreak, '###').split('###')
+
+  return {
+    crawlText: openingCrawl,
+    episode: rawCrawlData.episode_id,
+    releaseDate: rawCrawlData.release_date,
+    title: rawCrawlData.title.toUpperCase()
+  };
 };
