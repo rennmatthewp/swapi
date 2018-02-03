@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CardContainer from "../CardContainer/CardContainer";
-import Header from "../Header/Header";
+import CardContainer from '../CardContainer/CardContainer';
+import Header from '../Header/Header';
+import { fetchPeople } from '../../apiHelper/apiHelper';
 
 class Main extends Component {
   constructor() {
@@ -10,10 +11,13 @@ class Main extends Component {
       planets: [],
       vehicles: [],
       favorites: []
-    }
+    };
   }
 
-  
+  async componentDidMount() {
+    const people = await fetchPeople();
+    this.setState({ people });
+  }
 
   render() {
     return (
