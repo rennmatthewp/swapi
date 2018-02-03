@@ -25,7 +25,7 @@ class Main extends Component {
     return (
       <div>
         <Header getPeople={this.getPeople} />
-        <CardContainer />
+        <CardContainer people={this.state.people} />
       </div>
     );
   }
