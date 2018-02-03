@@ -38,3 +38,5 @@ export const fetchPeople = async () => {
     console.log('Error in fetchPeople:', error) 
   }
 };
+
+// export const getPeople = ()

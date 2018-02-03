@@ -8,21 +8,23 @@ class Main extends Component {
     super();
     this.state = {
       people: [],
-      planets: [],
-      vehicles: [],
       favorites: []
     };
   }
 
-  async componentDidMount() {
+  // async componentDidMount() {
+  //   this.getPeople()
+  // }
+
+  getPeople = async () => {
     const people = await fetchPeople();
     this.setState({ people });
-  }
+  };
 
   render() {
     return (
       <div>
-        <Header />
+        <Header getPeople={this.getPeople} />
         <CardContainer />
       </div>
     );
