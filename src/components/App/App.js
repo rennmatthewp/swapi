@@ -6,7 +6,7 @@ import Main from '../Main/Main';
 // import * as fetch from '../../apiHelper/apiHelper'
 import './App.css';
 
-import { getFilm } from '../../apiHelper/apiHelper';
+import { fetchFilm } from '../../apiHelper/apiHelper';
 
 class App extends Component {
   constructor() {
@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const filmObj = await getFilm();
+    const filmObj = await fetchFilm();
     this.setState({ ...filmObj });
   }
 
