@@ -1,16 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import Control from '../Control/Control';
 
-const Header = props => {
+const Header = ({ getPeople }) => {
   return (
     <div>
-     Header 
+      <Control getPeople={getPeople} />
     </div>
   );
 };
 
-// Header.propTypes = {
-
-// };
+Header.propTypes = {
+  getPeople: PropTypes.func
+};
 
 export default Header;
