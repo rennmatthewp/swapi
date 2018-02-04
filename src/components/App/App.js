@@ -12,13 +12,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      
+      filmObj: {}
     };
   }
 
   async componentDidMount() {
     const filmObj = await fetchFilm();
-    this.setState({ ...filmObj });
+    this.setState({ filmObj });
   }
 
   render() {
@@ -26,7 +26,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" render={() => (
-            <Crawl {...this.state} /> 
+            <Crawl {...this.state.filmObj} /> 
           )} />
           <Route exact path="/main" component={Main} />
         </Switch>
