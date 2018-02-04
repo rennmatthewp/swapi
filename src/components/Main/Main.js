@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import CardContainer from '../CardContainer/CardContainer';
 import Header from '../Header/Header';
-import { fetchPeople, fetchPlanets, fetchVehicles } from '../../apiHelper/apiHelper';
+import {
+  fetchPeople,
+  fetchPlanets,
+  fetchVehicles
+} from '../../apiHelper/apiHelper';
 
 class Main extends Component {
   constructor() {
@@ -14,9 +18,9 @@ class Main extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getVehicles();
-  }
+  // componentDidMount() {
+  //   this.getVehicles();
+  // }
 
   getPeople = async () => {
     const people = await fetchPeople();
@@ -30,13 +34,17 @@ class Main extends Component {
 
   getVehicles = async () => {
     const vehicles = await fetchVehicles();
-    this.setState({ vehicles })
-  }
+    this.setState({ vehicles });
+  };
 
   render() {
     return (
       <div>
-        <Header getPeople={this.getPeople} getPlanets={this.getPlanets} />
+        <Header
+          getPeople={this.getPeople}
+          getPlanets={this.getPlanets}
+          getVehicles={this.getVehicles}
+        />
         <CardContainer people={this.state.people} />
       </div>
     );
