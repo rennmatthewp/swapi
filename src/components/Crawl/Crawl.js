@@ -1,20 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import './Crawl.css';
 
 const Crawl = ({ crawlText, episode, releaseDate, title }) => {
   const story = crawlText
     ? crawlText.map((paragraph, index) => <p key={index}>{paragraph}</p>)
-    : null;    
+    : null;
 
   return (
-    <Link to="/main">
+    <Link to="/main" className="link">
+      <div className="fade" />
       <div className="crawl">
-        crwal
-        <h3>EPISODE {episode}</h3>
-        <h3>{title}</h3>
-        {story}
-        <h3>{releaseDate}</h3>
+        <div className="content">
+          <div className="title">
+            <h4>Episode {episode}</h4>
+            <h3>{title}</h3>
+          </div>
+          {story}
+          <h4>{releaseDate}</h4>
+        </div>
       </div>
     </Link>
   );
