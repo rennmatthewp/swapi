@@ -13,9 +13,9 @@ class Main extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getPlanets()
-  }
+  // componentDidMount() {
+  //   this.getPlanets();
+  // }
 
   getPeople = async () => {
     const people = await fetchPeople();
@@ -24,13 +24,13 @@ class Main extends Component {
 
   getPlanets = async () => {
     const planets = await fetchPlanets();
-    this.setState({ planets })
-  }
+    this.setState({ planets });
+  };
 
   render() {
     return (
       <div>
-        <Header getPeople={this.getPeople} />
+        <Header getPeople={this.getPeople} getPlanets={this.getPlanets} />
         <CardContainer people={this.state.people} />
       </div>
     );
