@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CardContainer from '../CardContainer/CardContainer';
 import Header from '../Header/Header';
-import { fetchPeople, fetchPlanets } from '../../apiHelper/apiHelper';
+import { fetchPeople, fetchPlanets, fetchVehicles } from '../../apiHelper/apiHelper';
 
 class Main extends Component {
   constructor() {
@@ -9,12 +9,13 @@ class Main extends Component {
     this.state = {
       people: [],
       planets: [],
+      vehicles: [],
       favorites: []
     };
   }
 
   componentDidMount() {
-    this.getPlanets()
+    this.getVehicles();
   }
 
   getPeople = async () => {
@@ -24,13 +25,18 @@ class Main extends Component {
 
   getPlanets = async () => {
     const planets = await fetchPlanets();
-    this.setState({ planets })
+    this.setState({ planets });
+  };
+
+  getVehicles = async () => {
+    const vehicles = await fetchVehicles();
+    this.setState({ vehicles })
   }
 
   render() {
     return (
       <div>
-        <Header getPeople={this.getPeople} />
+        <Header getPeople={this.getPeople} getPlanets={this.getPlanets} />
         <CardContainer people={this.state.people} />
       </div>
     );

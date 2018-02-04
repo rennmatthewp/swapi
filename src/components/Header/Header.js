@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Control from '../Control/Control';
 
-const Header = ({ getPeople }) => {
+const Header = ({ getPeople, getPlanets }) => {
   return (
     <div>
-      <Control getPeople={getPeople} />
+      <Control getPeople={getPeople} getPlanets={getPlanets} />
     </div>
   );
 };

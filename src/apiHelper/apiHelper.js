@@ -42,8 +42,8 @@ export const fetchPlanets = async () => {
   try {
     const initialFetch = await fetchAndParse('https://swapi.co/api/planets/');
     const planets = initialFetch.results.map(async planet => {
-      const residentPromises = planet.residents.map(async person =>
-        await fetchResident(person)
+      const residentPromises = planet.residents.map(
+        async person => await fetchResident(person)
       );
       const residents = await Promise.all(residentPromises);
 
@@ -64,4 +64,22 @@ export const fetchPlanets = async () => {
 const fetchResident = async url => {
   const resident = await fetchAndParse(url);
   return resident.name;
+};
+
+export const fetchVehicles = async () => {
+  try {
+    const initialFetch = await fetchAndParse('https://swapi.co/api/vehicles/');
+    const vehicles = initialFetch.results.map(vehicle => {
+      return {
+        name: vehicle.name,
+        model: vehicle.model,
+        class: vehicle.vehicle_class,
+        capacity: vehicle.passengers
+      };
+    });
+    
+    return vehicles;
+  } catch (error) {
+    console.log('error in fetchVehicles:', error);
+  }
 };
