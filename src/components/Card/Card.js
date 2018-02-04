@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Card = ({ name, homeworld, homeWorldPop, species }) => {
-  console.log('opp:', homeWorldPop)
-  
   return (
     <div>
       <h3>{name}</h3>

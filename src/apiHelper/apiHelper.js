@@ -31,12 +31,37 @@ export const fetchPeople = async () => {
         species: species.name
       };
     });
-  
+
     return Promise.all(people);
-    
   } catch (error) {
-    console.log('Error in fetchPeople:', error) 
+    console.log('Error in fetchPeople:', error);
   }
 };
 
-// export const getPeople = ()
+export const fetchPlanets = async () => {
+  try {
+    const initialFetch = await fetchAndParse('https://swapi.co/api/planets/');
+    const planets = initialFetch.results.map(async planet => {
+      const residentPromises = planet.residents.map(async person =>
+        await fetchResident(person)
+      );
+      const residents = await Promise.all(residentPromises);
+
+      return {
+        name: planet.name,
+        climate: planet.climate,
+        population: planet.population,
+        residents: residents.join(', '),
+        terrain: planet.terrain
+      };
+    });
+    return Promise.all(planets);
+  } catch (error) {
+    console.log('error in fetchPlanets:', error);
+  }
+};
+
+const fetchResident = async url => {
+  const resident = await fetchAndParse(url);
+  return resident.name;
+};
