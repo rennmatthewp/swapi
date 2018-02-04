@@ -14,6 +14,11 @@ const Crawl = ({ crawlText, episode, releaseDate, title }) => {
       <div className="crawl">
         <div className="content">
           <div className="title">
+            <img
+              // eslint-disable-next-line
+              src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Star_Wars_Yellow_Logo.svg"
+              alt="star wars logo"
+            />
             <h4>Episode {episode}</h4>
             <h3>{title}</h3>
           </div>
