@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import CardContainer from '../CardContainer/CardContainer';
 import Header from '../Header/Header';
-import { fetchPeople } from '../../apiHelper/apiHelper';
+import { fetchPeople, fetchPlanets } from '../../apiHelper/apiHelper';
 
 class Main extends Component {
   constructor() {
     super();
     this.state = {
       people: [],
+      planets: [],
       favorites: []
     };
   }
 
-  // async componentDidMount() {
-  //   this.getPeople()
-  // }
+  componentDidMount() {
+    this.getPlanets()
+  }
 
   getPeople = async () => {
     const people = await fetchPeople();
     this.setState({ people });
   };
+
+  getPlanets = async () => {
+    const planets = await fetchPlanets();
+    this.setState({ planets })
+  }
 
   render() {
     return (
