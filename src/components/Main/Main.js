@@ -27,15 +27,16 @@ class Main extends Component {
   };
 
   displayFavorites = () => {
-    const favorites = this.state.favorites.length > 0 ? this.state.favorites : null
-    this.setState({ cardData: favorites})
-  }
+    const favorites =
+      this.state.favorites.length > 0 ? this.state.favorites : null;
+    this.setState({ cardData: favorites });
+  };
 
   toggleFavorite = dataObj => {
-    const {favorites} = this.state;
+    const { favorites } = this.state;
 
     if (favorites.includes(dataObj)) {
-      const newState = favorites.filter( elem => elem !== dataObj)
+      const newState = favorites.filter(elem => elem !== dataObj);
       this.setState({ favorites: newState });
     } else {
       this.setState({ favorites: [...favorites, dataObj] });
@@ -45,7 +46,10 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Header getCardData={this.getCardData} displayFavorites={this.displayFavorites}/>
+        <Header
+          getCardData={this.getCardData}
+          displayFavorites={this.displayFavorites}
+        />
         <CardContainer
           cardData={this.state.cardData}
           toggleFavorite={this.toggleFavorite}

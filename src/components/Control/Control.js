@@ -36,7 +36,8 @@ const Control = ({ getCardData, displayFavorites}) => {
 };
 
 Control.propTypes = {
-  getPeople: PropTypes.func
+  getCardData: PropTypes.func,
+  displayFavorites: PropTypes.func
 };
 
 export default Control;

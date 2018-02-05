@@ -11,7 +11,8 @@ const Header = ({ getCardData, displayFavorites }) => {
 };
 
 Header.propTypes = {
-  getPeople: PropTypes.func
+  getCardData: PropTypes.func,
+  displayFavorites: PropTypes.func
 };
 
 export default Header;

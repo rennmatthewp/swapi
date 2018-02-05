@@ -27,7 +27,8 @@ const Card = ({ cardObj, toggleFavorite }) => {
 };
 
 Card.propTypes = {
-  props: PropTypes.objectOf(PropTypes.string)
+  cardObj: PropTypes.objectOf(PropTypes.string),
+  toggleFavorite: PropTypes.func
 };
 
 export default Card;
