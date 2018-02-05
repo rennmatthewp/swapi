@@ -26,11 +26,25 @@ class Main extends Component {
     this.setState({ cardData });
   };
 
+  toggleFavorite = dataObj => {
+    const {favorites} = this.state;
+
+    if (favorites.includes(dataObj)) {
+      const newState = favorites.filter( elem => elem !== dataObj)
+      this.setState({ favorites: newState });
+    } else {
+      this.setState({ favorites: [...favorites, dataObj] });
+    }
+  };
+
   render() {
     return (
       <div>
         <Header getCardData={this.getCardData} />
-        <CardContainer cardData={this.state.cardData} />
+        <CardContainer
+          cardData={this.state.cardData}
+          toggleFavorite={this.toggleFavorite}
+        />
       </div>
     );
   }
