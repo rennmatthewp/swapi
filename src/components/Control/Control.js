@@ -1,35 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Control = ({ getCardData }) => {
+const Control = ({ getCardData, displayFavorites}) => {
   return (
     <div>
-      <Link to="/main/people">
+      <NavLink to="/main/people">
         <button name="people" onClick={event => getCardData(event.target.name)}>
           People
         </button>
-      </Link>
-      <Link to="/main/planets">
+      </NavLink>
+      <NavLink to="/main/planets">
         <button
           name="planets"
           onClick={event => getCardData(event.target.name)}>
           Planets
         </button>
-      </Link>
-      <Link to="/main/vehicles">
+      </NavLink>
+      <NavLink to="/main/vehicles">
         <button
           name="vehicles"
           onClick={event => getCardData(event.target.name)}>
           Vehicles
         </button>
-      </Link>
+      </NavLink>
+      <NavLink to="/main/favorites">
+        <button
+          name="favorites"
+          onClick={displayFavorites}>
+          Favorites
+        </button>
+      </NavLink>
     </div>
   );
 };
 
 Control.propTypes = {
-  getPeople: PropTypes.func
+  getCardData: PropTypes.func,
+  displayFavorites: PropTypes.func
 };
 
 export default Control;

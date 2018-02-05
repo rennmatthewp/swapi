@@ -2,18 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
 
-const Card = props => {
-  const info = Object.keys(props).map(key => (
+const Card = ({ cardObj, toggleFavorite }) => {
+  const info = Object.keys(cardObj).map(key => (
     <h5 key={key}>
-      {key}: {props[key]}
+      <span>{key}</span>: {cardObj[key]}
     </h5>
   ));
 
-  return <div className="card">{info}</div>;
+  const favButton = (
+    <button
+      onClick={() => {
+        toggleFavorite(cardObj);
+      }}>
+      X
+    </button>
+  );
+
+  return (
+    <div className="card">
+      {favButton}
+      {info}
+    </div>
+  );
 };
 
 Card.propTypes = {
-  props: PropTypes.objectOf(PropTypes.string)
+  cardObj: PropTypes.objectOf(PropTypes.string),
+  toggleFavorite: PropTypes.func
 };
 
 export default Card;

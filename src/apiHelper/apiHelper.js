@@ -15,6 +15,7 @@ const cleanCrawlData = ({ episode_id, opening_crawl, release_date, title }) => {
 export const fetchFilm = async () => {
   const number = Math.ceil(Math.random() * 7);
   const crawlData = await fetchAndParse(`https://swapi.co/api/films/${number}`);
+  
   return cleanCrawlData(crawlData);
 };
 
@@ -24,6 +25,7 @@ export const fetchPeople = async () => {
     const people = initialFetch.results.map(async person => {
       const homeworld = await fetchAndParse(person.homeworld);
       const species = await fetchAndParse(person.species);
+
       return {
         name: person.name,
         homeworld: homeworld.name,
@@ -39,7 +41,7 @@ export const fetchPeople = async () => {
 };
 
 const fetchResident = async url => {
-  const resident = await fetchAndParse(url).name;
+  const resident = await fetchAndParse(url);
   return resident.name;
 };
 
@@ -71,7 +73,6 @@ export const fetchVehicles = async () => {
   try {
     const initialFetch = await fetchAndParse('https://swapi.co/api/vehicles/');
     const vehicles = initialFetch.results.map(vehicle => {
-
       return {
         name: vehicle.name,
         model: vehicle.model,
