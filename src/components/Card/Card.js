@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Card.css';
 
-const Card = ({ name, homeworld, homeWorldPop, species }) => {
-  return (
-    <div>
-      <h3>{name}</h3>
-      <h5>species: {species}</h5>
-      <h5>homeworld: {homeworld}</h5>
-      <h5>homeworld population: {homeWorldPop}</h5>
-    </div>
-  );
+const Card = props => {
+  const info = Object.keys(props).map(key => (
+    <h5 key={key}>
+      {key}: {props[key]}
+    </h5>
+  ));
+
+  return <div className="card">{info}</div>;
 };
 
 Card.propTypes = {
-  name: PropTypes.string,
-  homeworld: PropTypes.string,
-  homeworldPop: PropTypes.string,
-  species: PropTypes.string
+  props: PropTypes.objectOf(PropTypes.string)
 };
 
 export default Card;
