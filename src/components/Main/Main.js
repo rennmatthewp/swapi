@@ -18,24 +18,18 @@ class Main extends Component {
       people: fetchPeople,
       planets: fetchPlanets,
       vehicles: fetchVehicles
-    }
+    };
   }
-  
-  // componentDidMount() {
-  //   this.getVehicles();
-  // }
 
-  getCardData = async (type) => {
-    const cardData = await this.fetch[type]()
-    this.setState({cardData})
-  }
+  getCardData = async type => {
+    const cardData = await this.fetch[type]();
+    this.setState({ cardData });
+  };
 
   render() {
     return (
       <div>
-        <Header
-          getCardData={this.getCardData}
-        />
+        <Header getCardData={this.getCardData} />
         <CardContainer cardData={this.state.cardData} />
       </div>
     );
