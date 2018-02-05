@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Control from '../Control/Control';
 
-const Header = ({ getPeople, getPlanets, getVehicles }) => {
+const Header = ({ getCardData }) => {
   return (
     <div>
       <Control
-        getPeople={getPeople}
-        getPlanets={getPlanets}
-        getVehicles={getVehicles}
+        getCardData={getCardData}
       />
     </div>
   );
