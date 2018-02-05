@@ -11,41 +11,26 @@ class Main extends Component {
   constructor() {
     super();
     this.state = {
-      people: [],
-      planets: [],
-      vehicles: [],
-      favorites: []
+      favorites: [],
+      cardData: []
+    };
+    this.fetch = {
+      people: fetchPeople,
+      planets: fetchPlanets,
+      vehicles: fetchVehicles
     };
   }
 
-  // componentDidMount() {
-  //   this.getVehicles();
-  // }
-
-  getPeople = async () => {
-    const people = await fetchPeople();
-    this.setState({ people });
-  };
-
-  getPlanets = async () => {
-    const planets = await fetchPlanets();
-    this.setState({ planets });
-  };
-
-  getVehicles = async () => {
-    const vehicles = await fetchVehicles();
-    this.setState({ vehicles });
+  getCardData = async type => {
+    const cardData = await this.fetch[type]();
+    this.setState({ cardData });
   };
 
   render() {
     return (
       <div>
-        <Header
-          getPeople={this.getPeople}
-          getPlanets={this.getPlanets}
-          getVehicles={this.getVehicles}
-        />
-        <CardContainer people={this.state.people} />
+        <Header getCardData={this.getCardData} />
+        <CardContainer cardData={this.state.cardData} />
       </div>
     );
   }

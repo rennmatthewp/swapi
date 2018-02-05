@@ -28,7 +28,7 @@ class App extends Component {
           <Route exact path="/" render={() => (
             <Crawl {...this.state.filmObj} /> 
           )} />
-          <Route exact path="/main" component={Main} />
+          <Route path="/main" component={Main} />
         </Switch>
       </div>
     );

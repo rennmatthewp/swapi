@@ -1,9 +1,3 @@
-export const fetchFilm = async () => {
-  const number = Math.ceil(Math.random() * 7);
-  const crawlData = await fetchAndParse(`https://swapi.co/api/films/${number}`);
-  return cleanCrawlData(crawlData);
-};
-
 const fetchAndParse = url => fetch(url).then(res => res.json());
 
 const cleanCrawlData = ({ episode_id, opening_crawl, release_date, title }) => {
@@ -16,6 +10,12 @@ const cleanCrawlData = ({ episode_id, opening_crawl, release_date, title }) => {
     releaseDate: release_date,
     title: title.toUpperCase()
   };
+};
+
+export const fetchFilm = async () => {
+  const number = Math.ceil(Math.random() * 7);
+  const crawlData = await fetchAndParse(`https://swapi.co/api/films/${number}`);
+  return cleanCrawlData(crawlData);
 };
 
 export const fetchPeople = async () => {
@@ -38,6 +38,11 @@ export const fetchPeople = async () => {
   }
 };
 
+const fetchResident = async url => {
+  const resident = await fetchAndParse(url).name;
+  return resident.name;
+};
+
 export const fetchPlanets = async () => {
   try {
     const initialFetch = await fetchAndParse('https://swapi.co/api/planets/');
@@ -55,21 +60,18 @@ export const fetchPlanets = async () => {
         terrain: planet.terrain
       };
     });
+
     return Promise.all(planets);
   } catch (error) {
     console.log('error in fetchPlanets:', error);
   }
 };
 
-const fetchResident = async url => {
-  const resident = await fetchAndParse(url);
-  return resident.name;
-};
-
 export const fetchVehicles = async () => {
   try {
     const initialFetch = await fetchAndParse('https://swapi.co/api/vehicles/');
     const vehicles = initialFetch.results.map(vehicle => {
+
       return {
         name: vehicle.name,
         model: vehicle.model,
@@ -77,7 +79,7 @@ export const fetchVehicles = async () => {
         capacity: vehicle.passengers
       };
     });
-    
+
     return vehicles;
   } catch (error) {
     console.log('error in fetchVehicles:', error);
