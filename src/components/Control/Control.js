@@ -1,12 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Control = ({ getPeople, getPlanets, getVehicles }) => {
+const Control = ({ getCardData }) => {
   return (
     <div>
-      <button onClick={getPeople}>People</button>
-      <button onClick={getPlanets}>Planets</button>
-      <button onClick={getVehicles}>Vehicles</button>
+      <Link to="/main/people">
+        <button name="people" onClick={event => getCardData(event.target.name)}>
+          People
+        </button>
+      </Link>
+      <Link to="/main/planets">
+        <button
+          name="planets"
+          onClick={event => getCardData(event.target.name)}>
+          Planets
+        </button>
+      </Link>
+      <Link to="/main/vehicles">
+        <button
+          name="vehicles"
+          onClick={event => getCardData(event.target.name)}>
+          Vehicles
+        </button>
+      </Link>
     </div>
   );
 };
