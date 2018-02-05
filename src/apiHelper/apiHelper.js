@@ -1,6 +1,6 @@
-const fetchAndParse = url => fetch(url).then(res => res.json());
+export const fetchAndParse = url => fetch(url).then(res => res.json());
 
-const cleanCrawlData = ({ episode_id, opening_crawl, release_date, title }) => {
+export const cleanCrawlData = ({ episode_id, opening_crawl, release_date, title }) => {
   const lineBreak = new RegExp(/\s{4,}/, 'g');
   const openingCrawl = opening_crawl.replace(lineBreak, '###').split('###');
 
