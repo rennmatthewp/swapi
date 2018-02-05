@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 
-const CardContainer = ({ people }) => {
-  const cards = people.map(person => <Card {...person} key={person.name} />);
+const CardContainer = ({ cardData }) => {
+  const cards = cardData.map(cardObj => (
+    <Card {...cardObj} key={cardObj.name} />
+  ));
+
   return <div>{cards}</div>;
 };
 
 CardContainer.propTypes = {
-  people: PropTypes.arrayOf(PropTypes.object)
+  cardData: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default CardContainer;
