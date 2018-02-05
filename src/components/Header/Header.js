@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Control from '../Control/Control';
 
-const Header = ({ getCardData }) => {
+const Header = ({ getCardData, displayFavorites }) => {
   return (
     <div>
-      <Control
-        getCardData={getCardData}
-      />
+      <Control getCardData={getCardData} displayFavorites={displayFavorites} />
     </div>
   );
 };
